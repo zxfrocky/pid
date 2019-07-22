@@ -21,8 +21,8 @@
 #include "go_asm.h"
 #include "textflag.h"
 
-// func GetM() int64
-TEXT ·GetM(SB),NOSPLIT,$0-8
+// func getM() int64
+TEXT ·getM(SB),NOSPLIT,$0-8
 	MOVQ (TLS), R14
 	MOVQ g_m(R14), R13
 	MOVQ R13, ret+0(FP)

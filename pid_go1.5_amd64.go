@@ -14,18 +14,18 @@
 // for names of contributors.
 
 // +build amd64 amd64p32
-// +build gc,go1.5,!go1.13
+// +build gc,go1.5
 
 package goid
 
 import "unsafe"
 
 //go:nosplit
-func GetM() uintptr
+func getM() uintptr
 
 //go:nosplit
 func GetPid() int {
-	return int((*m)(unsafe.Pointer(GetM())).p.id)
+	return int((*m)(unsafe.Pointer(getM())).p.id)
 }
 
 //go:linkname procPin runtime.procPin
