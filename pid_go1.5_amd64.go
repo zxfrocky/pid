@@ -18,14 +18,18 @@
 
 package goid
 
-import "unsafe"
+import (
+	"unsafe"
+)
+
+var _ = unsafe.Sizeof(0)
 
 //go:nosplit
-func getM() uintptr
+func getPid() uintptr
 
 //go:nosplit
 func GetPid() int {
-	return int((*m)(unsafe.Pointer(getM())).p.id)
+	return int(getPid())
 }
 
 //go:linkname procPin runtime.procPin

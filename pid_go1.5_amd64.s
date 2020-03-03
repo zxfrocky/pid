@@ -21,9 +21,11 @@
 #include "go_asm.h"
 #include "textflag.h"
 
-// func getM() int64
-TEXT ·getM(SB),NOSPLIT,$0-8
+// func getPid() int64
+TEXT ·getPid(SB),NOSPLIT,$0-8
 	MOVQ (TLS), R14
 	MOVQ g_m(R14), R13
+	MOVQ m_p(R13), R14
+	MOVL p_id(R14), R13
 	MOVQ R13, ret+0(FP)
 	RET

@@ -10,7 +10,7 @@ import (
 func TestPid(t *testing.T) {
 	p1 := GetPid()
 	p2 := getTID()
-	if GetPid() != getTID() {
-		t.Fatalf("The result of GetPid %d is not equal to procPin %d!", p1, p2)
+	if p1 != p2 {
+		t.Fatalf("The result of GetPid %d procPin %d are not equal!", p1, p2)
 	}
 }
