@@ -13,16 +13,10 @@
 // permissions and limitations under the License. See the AUTHORS file
 // for names of contributors.
 
-// +build amd64 amd64p32
+// +build amd64 amd64p32 arm64
 // +build gc,go1.5
 
 package goid
-
-import (
-	"unsafe"
-)
-
-var _ = unsafe.Sizeof(0)
 
 //go:nosplit
 func getPid() uintptr
@@ -30,18 +24,4 @@ func getPid() uintptr
 //go:nosplit
 func GetPid() int {
 	return int(getPid())
-}
-
-//go:linkname procPin runtime.procPin
-//go:nosplit
-func procPin() int
-
-//go:linkname procUnpin runtime.procUnpin
-//go:nosplit
-func procUnpin()
-
-func getTID() int {
-	tid := procPin()
-	procUnpin()
-	return tid
 }
